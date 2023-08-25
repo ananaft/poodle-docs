@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"Overview","text":""},{"location":"01_installation/","title":"Installation","text":""},{"location":"02_first-steps/","title":"First steps","text":""}]}
