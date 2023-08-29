@@ -12,6 +12,8 @@
         <link rel="prev" href="../01_installation/">
       
       
+        <link rel="next" href="../03_questions/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.3">
@@ -235,6 +237,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    First steps
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -245,6 +258,58 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-question" class="md-nav__link">
+    Creating a question
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-exam" class="md-nav__link">
+    Creating an exam
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -269,6 +334,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-question" class="md-nav__link">
+    Creating a question
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-exam" class="md-nav__link">
+    Creating an exam
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -283,6 +370,88 @@
 
 
 <h1 id="first-steps">First steps</h1>
+<p>After setting up Poodle, you can use it as a terminal command with the following arguments:</p>
+<pre><code>poodle [OPTION] ... &lt;DATABASE&gt;
+
+Connection options:
+  -l             connects to an already running MongoDB daemon on local
+                 system or starts one manually
+  -s &lt;ADDRESS&gt;   connects to a server hosted at &lt;ADDRESS&gt; running a MongoDB
+                 daemon
+Authorization options:
+  -u &lt;USERNAME&gt;  username for authorization; usually only needed when
+                 connecting to server
+  -p &lt;PASSWORD&gt;  password for authorization; only needed when username
+                 option is provided; user will be asked for password input
+                 by prompt if this option is not provided
+Miscellaneous options:
+  -h             show this help
+</code></pre>
+<p>The options <code>-l</code> and <code>-s</code> are mandatory and mutually exclusive, meaning that
+exactly one of them has to provided any time the <code>poodle</code> command is invoked.</p>
+<p>We'll start by simply running <code>poodle -l test</code>. This will launch Poodle locally
+and create the database <code>test</code>. When first launching a new database, you are
+greeted with the following message:</p>
+<pre><code>No question categories specified for database test!
+Please input list of categories you want to set for this database
+or input 0 if no predetermined categories are desired:
+</code></pre>
+<p>For now, you can simply input 0 and move on. You are now inside your first
+database which, at this point, does not contain any questions. We'll start by
+inserting the first question. </p>
+<h2 id="creating-a-question">Creating a question</h2>
+<p>Questions in Poodle are basically JSON documents that are saved within the
+MongoDB database architecture. Different question types all have their own
+characteristics with some common features.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Initiate the graphical user
+interface of Poodle by entering the command <code>gtk_overview()</code>. You should see a
+relatively empty window with some columns and a few buttons on the bottom. Press
+the <strong>New</strong> button on the bottom left and press <strong>OK</strong> in the window that
+opens. You can now see the template for a new multiple choice question.</p>
+<p>Name this question <em>question01</em> and fill in all remaining fields. <strong>question</strong>
+is the question's text that is displayed to students, <strong>correct_answers</strong> and
+<strong>false_answers</strong> should be obvious, <strong>single</strong> (0 or 1) determines if students
+can check one or more multiple answers as correct, <strong>points</strong> denotes the max
+amount of points students can achieve for this question, <strong>difficulty</strong> is a
+subjective difficulty ranking from 1 (very easy) to 4 (very hard), <strong>time_est</strong>
+is the subjective estimated time for question completion in minutes,
+<strong>family_type</strong> can be disregarded for now, just enter <em>single</em>, and
+<strong>in_exams</strong> can not be filled at this point. You don't need to worry too much
+about the exact contents of the question.</p>
+<p>If you press the <strong>Raw</strong> tab on the top of the window, you can see what the
+question looks like at the database level. It might look something like this:</p>
+<pre><code>{
+    "name": "question01",
+    "question": "This is our first question. Please choose the right answer.",
+    "family_type": "single",
+    "moodle_type": "multichoice",
+    "points": 1,
+    "in_exams": {},
+    "time_est": 1,
+    "difficulty": 1,
+    "correct_answers": [
+        "Right"
+    ],
+    "false_answers": [
+        "Wrong",
+        "False",
+        "Incorrect"
+    ],
+    "single": 0
+}
+</code></pre>
+<p>To save this question, just press <strong>Save</strong> on the bottom left and answer <strong>Yes</strong>
+to the dialog that pops up. You can now close the question's window. The
+overview should have updated and you should now see your question there.</p>
+<h2 id="creating-an-exam">Creating an exam</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>You can read more about question types in the chapter
+<a href="../03_questions/">Questions</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
