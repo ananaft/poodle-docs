@@ -83,10 +83,45 @@ overview should have updated and you should now see your question there.
 
 ## Creating an exam
 
+There are multiple ways to create a new exam with existing questions. You can
+either initiate exam creation from within the **Questions** or the **Exams**
+tab. Inside the **Questions** tab, click on the **Add to exam** button to add
+selected questions to the exam, and inside the **Exams** tab, simply click
+**New**. Enter an exam name at the following prompt and press **OK**. The exam
+creation window will now open.
 
+On the left side you see a text in field in which question names are
+entered. Whenever you press the **Add to exam** button, a selected question's
+name will be added to this field, but you can also enter question names
+manually. On the right side are exam metrics which can be manually updated by
+pushing the **Update report** button. Once you're done with question selection,
+hit **Create exam**, and the new exam will appear within the **Exams** tab.
 
+## Importing an exam to Moodle
+
+When an exam has been created, you will find an XML file at the path
+`databases/<db-name>/exams/<new-exam-name>/` which contains an XML
+representation of all questions within the exam and will be used for import into
+Moodle. Once you're logged into Moodle and inside the course to which you want
+to add the exam, click on **Question bank** within the administration panel and
+select **Import**, as seen below.
+
+![question-import](img/question-import.png)
+
+Select the Moodle XML file format, and drag your XML file into the designated
+window, afterwards press the **Import** button. Hit **Continue** on the
+following screen and you will see all questions from your exam inside the
+question bank. You can now use these questions as you would any which had been
+created inside Moodle.[^2]
+
+## Evaluating an exam
+
+nochmal bild 
 
 [^1]: You can read more about question types in the chapter
     [Questions](03_questions.md).
+	
+[^2]: It is advised to check questions which contain any sort of formatting,
+    e.g. HTML code, latex code, tables, or images, before using them.
 
 [//]: # (importing from Moodle goes here in the future)
