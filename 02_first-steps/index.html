@@ -43,6 +43,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -287,6 +289,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#importing-an-exam-to-moodle" class="md-nav__link">
+    Importing an exam to Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-an-exam" class="md-nav__link">
+    Evaluating an exam
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -350,6 +366,20 @@
         <li class="md-nav__item">
   <a href="#creating-an-exam" class="md-nav__link">
     Creating an exam
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-an-exam-to-moodle" class="md-nav__link">
+    Importing an exam to Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-an-exam" class="md-nav__link">
+    Evaluating an exam
   </a>
   
 </li>
@@ -443,12 +473,43 @@ question looks like at the database level. It might look something like this:</p
 to the dialog that pops up. You can now close the question's window. The
 overview should have updated and you should now see your question there.</p>
 <h2 id="creating-an-exam">Creating an exam</h2>
+<p>There are multiple ways to create a new exam with existing questions. You can
+either initiate exam creation from within the <strong>Questions</strong> or the <strong>Exams</strong>
+tab. Inside the <strong>Questions</strong> tab, click on the <strong>Add to exam</strong> button to add
+selected questions to the exam, and inside the <strong>Exams</strong> tab, simply click
+<strong>New</strong>. Enter an exam name at the following prompt and press <strong>OK</strong>. The exam
+creation window will now open.</p>
+<p>On the left side you see a text in field in which question names are
+entered. Whenever you press the <strong>Add to exam</strong> button, a selected question's
+name will be added to this field, but you can also enter question names
+manually. On the right side are exam metrics which can be manually updated by
+pushing the <strong>Update report</strong> button. Once you're done with question selection,
+hit <strong>Create exam</strong>, and the new exam will appear within the <strong>Exams</strong> tab.</p>
+<h2 id="importing-an-exam-to-moodle">Importing an exam to Moodle</h2>
+<p>When an exam has been created, you will find an XML file at the path
+<code>databases/&lt;db-name&gt;/exams/&lt;new-exam-name&gt;/</code> which contains an XML
+representation of all questions within the exam and will be used for import into
+Moodle. Once you're logged into Moodle and inside the course to which you want
+to add the exam, click on <strong>Question bank</strong> within the administration panel and
+select <strong>Import</strong>, as seen below.</p>
+<p><img alt="question-import" src="../img/question-import.png" /></p>
+<p>Select the Moodle XML file format, and drag your XML file into the designated
+window, afterwards press the <strong>Import</strong> button. Hit <strong>Continue</strong> on the
+following screen and you will see all questions from your exam inside the
+question bank. You can now use these questions as you would any which had been
+created inside Moodle.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<h2 id="evaluating-an-exam">Evaluating an exam</h2>
+<p>nochmal bild </p>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
 <p>You can read more about question types in the chapter
 <a href="../03_questions/">Questions</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>It is advised to check questions which contain any sort of formatting,
+e.g. HTML code, latex code, tables, or images, before using them.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
