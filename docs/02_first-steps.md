@@ -116,12 +116,29 @@ created inside Moodle.[^2]
 
 ## Evaluating an exam
 
-nochmal bild 
+In order to evaluate an exam inside Poodle which has been conducted on Moodle,
+you will need to select the exam inside your course. On the right side you'll
+see a **Quiz administration** tab. Expand **Results** and click on
+**Grades**.
+
+![exam-eval](img/exam-eval.png)
+
+Above individual student names you'll see an option to export the table data;
+download it in JSON format. Afterwards, click on **Statistics** and repeat this
+step.[^3]
+
+Inside Poodle select the **Exams** tab inside the overview and click on
+**Evaluate**. Select the files you just downloaded, confirm, and your exam is
+now evaluated inside of Poodle.
+
 
 [^1]: You can read more about question types in the chapter
     [Questions](03_questions.md).
 	
-[^2]: It is advised to check questions which contain any sort of formatting,
-    e.g. HTML code, latex code, tables, or images, before using them.
+[^2]: It is advised to check questions which contain any sort of formatting –
+    e.g. HTML code, latex code, tables, or images – before using them.
+	
+[^3]: Evaluation is only supported for files downloaded with an English or
+    German language profile.
 
 [//]: # (importing from Moodle goes here in the future)
